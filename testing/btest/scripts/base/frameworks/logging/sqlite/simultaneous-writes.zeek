@@ -2,6 +2,8 @@
 #
 # @TEST-REQUIRES: which sqlite3
 # @TEST-REQUIRES: has-writer Zeek::SQLiteWriter
+# Don't run this test if we build with '--sanitizers=thread'
+# @TEST-REQUIRES: grep -q "#define ZEEK_TSAN" zeek-config.h || test $? == 0
 # @TEST-GROUP: sqlite
 #
 # @TEST-EXEC: zeek -b %INPUT
@@ -87,4 +89,3 @@ event zeek_init()
 	Log::write(SSH::LOG, out);
 	Log::write(SSH::LOG2, out);
 }
-
