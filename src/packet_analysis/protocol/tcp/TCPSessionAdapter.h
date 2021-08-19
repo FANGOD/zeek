@@ -26,7 +26,7 @@ public:
 	~TCPSessionAdapter() override;
 
 	void Process(bool is_orig, const struct tcphdr* tp, int len,
-	             const std::unique_ptr<IP_Hdr>& ip, const u_char* data,
+	             const std::shared_ptr<IP_Hdr>& ip, const u_char* data,
 	             int remaining);
 
 	void EnableReassembly();

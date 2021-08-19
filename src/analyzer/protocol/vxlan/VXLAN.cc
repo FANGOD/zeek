@@ -59,6 +59,7 @@ void VXLAN_Analyzer::DeliverPacket(int len, const u_char* data, bool orig,
 
 	EncapsulatingConn inner(Conn(), BifEnum::Tunnel::VXLAN);
 	outer->Add(inner);
+	int encap_index = outer->Depth();
 
 	int vni = (data[4] << 16) + (data[5] << 8) + (data[6] << 0);
 
@@ -87,8 +88,14 @@ void VXLAN_Analyzer::DeliverPacket(int len, const u_char* data, bool orig,
 	ProtocolConfirmation();
 
 	if ( vxlan_packet )
-		Conn()->EnqueueEvent(vxlan_packet, nullptr, ConnVal(),
-		                     pkt.ip_hdr->ToPktHdrVal(), val_mgr->Count(vni));
+		{
+		EncapsulatingConn* ec = pkt.encap->At(encap_index);
+		if ( ec && ec->ip_hdr )
+			{
+			Conn()->EnqueueEvent(vxlan_packet, nullptr, ConnVal(),
+			                     ec->ip_hdr->ToPktHdrVal(), val_mgr->Count(vni));
+			}
+		}
 	}
 
 } // namespace zeek::analyzer::vxlan

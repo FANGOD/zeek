@@ -32,7 +32,7 @@ bool IPBasedAnalyzer::AnalyzePacket(size_t len, const uint8_t* data, Packet* pkt
 	if ( ! BuildConnTuple(len, data, pkt, tuple) )
 		return false;
 
-	const std::unique_ptr<IP_Hdr>& ip_hdr = pkt->ip_hdr;
+	const std::shared_ptr<IP_Hdr>& ip_hdr = pkt->ip_hdr;
 	detail::ConnKey key(tuple);
 
 	Connection* conn = session_mgr->FindConnection(key);
@@ -296,4 +296,3 @@ TableValPtr IPBasedAnalyzer::GetIgnoreChecksumsNets()
 		IPBasedAnalyzer::ignore_checksums_nets_table = zeek::id::find_val<TableVal>("ignore_checksums_nets");
 	return IPBasedAnalyzer::ignore_checksums_nets_table;
 	}
-
