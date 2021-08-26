@@ -77,6 +77,28 @@ protected:
 
 };
 
+/**
+ * Utility function for packet analyzers for tunnel protocols. This builds a new
+ * packet and sets up the encapsulation data based on the provided information.
+ *
+ * @param inner_pkt
+ * @param outer_pkt
+ * @param next_header
+ * @param encap_index
+ * @param encap_stack
+ * @param len
+ * @param data
+ * @param link_type
+ * @param tunnel_type
+ * @param analyzer_tag
+ */
+extern void build_inner_packet(Packet* inner_pkt, Packet* outer_pkt,
+                               uint32_t next_header, int* encap_index,
+                               std::shared_ptr<EncapsulationStack> encap_stack,
+                               uint32_t len, const u_char* data, int link_type,
+                               BifEnum::Tunnel::Type tunnel_type,
+                               const Tag& analyzer_tag);
+
 namespace detail {
 
 class IPTunnelTimer final : public zeek::detail::Timer {

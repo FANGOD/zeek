@@ -8,6 +8,8 @@
 #include "zeek/IP.h"
 #include "zeek/TunnelEncapsulation.h"
 #include "zeek/packet_analysis/protocol/ip/IP.h"
+#include "zeek/Event.h"
+#include "zeek/Conn.h"
 
 namespace zeek::packet_analysis::IPTunnel {
 
@@ -172,6 +174,48 @@ bool IPTunnelAnalyzer::ProcessEncapsulatedPacket(double t, const Packet* pkt,
 	bool return_val = packet_mgr->ProcessInnerPacket(&p);
 
 	return return_val;
+	}
+
+
+void build_inner_packet(Packet* inner_pkt, Packet* outer_pkt,
+                        uint32_t next_header, int* encap_index,
+                        std::shared_ptr<EncapsulationStack> encap_stack,
+                        uint32_t len, const u_char* data, int link_type,
+                        BifEnum::Tunnel::Type tunnel_type,
+                        const Tag& analyzer_tag)
+	{
+	// TODO: the other functions use the timestamp from the outer packet here if
+	// the packet is valid. Considering it should always be valid, why would they
+	// have ever used the timestamp time?
+	pkt_timeval ts;
+	ts.tv_sec = static_cast<time_t>(run_state::current_timestamp);
+	ts.tv_usec = static_cast<suseconds_t>((run_state::current_timestamp - static_cast<double>(ts.tv_sec)) * 1000000);
+	inner_pkt->Init(link_type, &ts, len, len, data);
+
+	*encap_index = 0;
+	if ( outer_pkt->session )
+		{
+		if ( encapsulation_protocol )
+			{
+			const auto& n = zeek::packet_mgr->GetComponentName(analyzer_tag.AsVal());
+			event_mgr.Enqueue(encapsulation_protocol, outer_pkt->session->GetVal(),
+			                  make_intrusive<StringVal>(n));
+			}
+
+		EncapsulatingConn inner(static_cast<Connection*>(outer_pkt->session), tunnel_type);
+
+		if ( ! outer_pkt->encap )
+			outer_pkt->encap = encap_stack != nullptr ? encap_stack : std::make_shared<EncapsulationStack>();
+
+		outer_pkt->encap->Add(inner);
+		inner_pkt->encap = outer_pkt->encap;
+		*encap_index = outer_pkt->encap->Depth();
+		}
+
+	// TODO: not sure this is necessary or if it should be in the inner packet data instead
+	outer_pkt->proto = next_header;
+	outer_pkt->gre_version = -1;
+	outer_pkt->tunnel_type = tunnel_type;
 	}
 
 namespace detail {
