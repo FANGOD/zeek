@@ -59,7 +59,6 @@
 0.000000   MetaHookPost  CallFunction(Analyzer::__register_for_port, <frame>, (Analyzer::ANALYZER_SSL, 993/tcp)) -> <no result>
 0.000000   MetaHookPost  CallFunction(Analyzer::__register_for_port, <frame>, (Analyzer::ANALYZER_SSL, 995/tcp)) -> <no result>
 0.000000   MetaHookPost  CallFunction(Analyzer::__register_for_port, <frame>, (Analyzer::ANALYZER_SYSLOG, 514/udp)) -> <no result>
-0.000000   MetaHookPost  CallFunction(Analyzer::__register_for_port, <frame>, (Analyzer::ANALYZER_TEREDO, 3544/udp)) -> <no result>
 0.000000   MetaHookPost  CallFunction(Analyzer::__register_for_port, <frame>, (Analyzer::ANALYZER_XMPP, 5222/tcp)) -> <no result>
 0.000000   MetaHookPost  CallFunction(Analyzer::__register_for_port, <frame>, (Analyzer::ANALYZER_XMPP, 5269/tcp)) -> <no result>
 0.000000   MetaHookPost  CallFunction(Analyzer::disable_analyzer, <frame>, (Analyzer::ANALYZER_TCPSTATS)) -> <no result>
@@ -122,7 +121,6 @@
 0.000000   MetaHookPost  CallFunction(Analyzer::register_for_port, <frame>, (Analyzer::ANALYZER_SSL, 993/tcp)) -> <no result>
 0.000000   MetaHookPost  CallFunction(Analyzer::register_for_port, <frame>, (Analyzer::ANALYZER_SSL, 995/tcp)) -> <no result>
 0.000000   MetaHookPost  CallFunction(Analyzer::register_for_port, <frame>, (Analyzer::ANALYZER_SYSLOG, 514/udp)) -> <no result>
-0.000000   MetaHookPost  CallFunction(Analyzer::register_for_port, <frame>, (Analyzer::ANALYZER_TEREDO, 3544/udp)) -> <no result>
 0.000000   MetaHookPost  CallFunction(Analyzer::register_for_port, <frame>, (Analyzer::ANALYZER_XMPP, 5222/tcp)) -> <no result>
 0.000000   MetaHookPost  CallFunction(Analyzer::register_for_port, <frame>, (Analyzer::ANALYZER_XMPP, 5269/tcp)) -> <no result>
 0.000000   MetaHookPost  CallFunction(Analyzer::register_for_ports, <frame>, (Analyzer::ANALYZER_DCE_RPC, {135/tcp})) -> <no result>
@@ -151,7 +149,6 @@
 0.000000   MetaHookPost  CallFunction(Analyzer::register_for_ports, <frame>, (Analyzer::ANALYZER_SSH, {22/tcp})) -> <no result>
 0.000000   MetaHookPost  CallFunction(Analyzer::register_for_ports, <frame>, (Analyzer::ANALYZER_SSL, {563<...>/tcp})) -> <no result>
 0.000000   MetaHookPost  CallFunction(Analyzer::register_for_ports, <frame>, (Analyzer::ANALYZER_SYSLOG, {514/udp})) -> <no result>
-0.000000   MetaHookPost  CallFunction(Analyzer::register_for_ports, <frame>, (Analyzer::ANALYZER_TEREDO, {3544/udp})) -> <no result>
 0.000000   MetaHookPost  CallFunction(Analyzer::register_for_ports, <frame>, (Analyzer::ANALYZER_XMPP, {5222<...>/tcp})) -> <no result>
 0.000000   MetaHookPost  CallFunction(Broker::__set_metrics_export_endpoint_name, <frame>, ()) -> <no result>
 0.000000   MetaHookPost  CallFunction(Broker::__set_metrics_export_interval, <frame>, (1.0 sec)) -> <no result>
@@ -626,6 +623,8 @@
 0.000000   MetaHookPost  CallFunction(PacketAnalyzer::register_packet_analyzer, <frame>, (PacketAnalyzer::ANALYZER_ROOT, 127, PacketAnalyzer::ANALYZER_IEEE802_11_RADIO)) -> <no result>
 0.000000   MetaHookPost  CallFunction(PacketAnalyzer::register_packet_analyzer, <frame>, (PacketAnalyzer::ANALYZER_ROOT, 239, PacketAnalyzer::ANALYZER_NFLOG)) -> <no result>
 0.000000   MetaHookPost  CallFunction(PacketAnalyzer::register_packet_analyzer, <frame>, (PacketAnalyzer::ANALYZER_ROOT, 50, PacketAnalyzer::ANALYZER_PPPSERIAL)) -> <no result>
+0.000000   MetaHookPost  CallFunction(PacketAnalyzer::register_packet_analyzer, <frame>, (PacketAnalyzer::ANALYZER_UDP, 32900, PacketAnalyzer::ANALYZER_TEREDO)) -> <no result>
+0.000000   MetaHookPost  CallFunction(PacketAnalyzer::register_packet_analyzer, <frame>, (PacketAnalyzer::ANALYZER_UDP, 3544, PacketAnalyzer::ANALYZER_TEREDO)) -> <no result>
 0.000000   MetaHookPost  CallFunction(PacketAnalyzer::register_packet_analyzer, <frame>, (PacketAnalyzer::ANALYZER_UDP, 4789, PacketAnalyzer::ANALYZER_VXLAN)) -> <no result>
 0.000000   MetaHookPost  CallFunction(PacketAnalyzer::register_packet_analyzer, <frame>, (PacketAnalyzer::ANALYZER_UDP, 5072, PacketAnalyzer::ANALYZER_AYIYA)) -> <no result>
 0.000000   MetaHookPost  CallFunction(PacketAnalyzer::register_packet_analyzer, <frame>, (PacketAnalyzer::ANALYZER_UDP, 6081, PacketAnalyzer::ANALYZER_GENEVE)) -> <no result>
@@ -640,6 +639,7 @@
 0.000000   MetaHookPost  CallFunction(PacketAnalyzer::register_packet_analyzer, <frame>, (PacketAnalyzer::ANALYZER_VNTAG, 34984, PacketAnalyzer::ANALYZER_VLAN)) -> <no result>
 0.000000   MetaHookPost  CallFunction(PacketAnalyzer::register_packet_analyzer, <frame>, (PacketAnalyzer::ANALYZER_VNTAG, 37120, PacketAnalyzer::ANALYZER_VLAN)) -> <no result>
 0.000000   MetaHookPost  CallFunction(PacketAnalyzer::register_protocol_detection, <frame>, (PacketAnalyzer::ANALYZER_UDP, PacketAnalyzer::ANALYZER_AYIYA)) -> <no result>
+0.000000   MetaHookPost  CallFunction(PacketAnalyzer::register_protocol_detection, <frame>, (PacketAnalyzer::ANALYZER_UDP, PacketAnalyzer::ANALYZER_TEREDO)) -> <no result>
 0.000000   MetaHookPost  CallFunction(PacketFilter::build, <frame>, ()) -> <no result>
 0.000000   MetaHookPost  CallFunction(PacketFilter::combine_filters, <frame>, (ip or not ip, and, )) -> <no result>
 0.000000   MetaHookPost  CallFunction(PacketFilter::install, <frame>, ()) -> <no result>
@@ -1018,6 +1018,7 @@
 0.000000   MetaHookPost  LoadFile(0, base<...>/supervisor.bif, <...>/supervisor.bif.zeek) -> -1
 0.000000   MetaHookPost  LoadFile(0, base<...>/syslog, <...>/syslog) -> -1
 0.000000   MetaHookPost  LoadFile(0, base<...>/tcp, <...>/tcp) -> -1
+0.000000   MetaHookPost  LoadFile(0, base<...>/teredo, <...>/teredo) -> -1
 0.000000   MetaHookPost  LoadFile(0, base<...>/thresholds, <...>/thresholds.zeek) -> -1
 0.000000   MetaHookPost  LoadFile(0, base<...>/time, <...>/time.zeek) -> -1
 0.000000   MetaHookPost  LoadFile(0, base<...>/tunnels, <...>/tunnels) -> -1
@@ -1112,7 +1113,6 @@
 0.000000   MetaHookPre   CallFunction(Analyzer::__register_for_port, <frame>, (Analyzer::ANALYZER_SSL, 993/tcp))
 0.000000   MetaHookPre   CallFunction(Analyzer::__register_for_port, <frame>, (Analyzer::ANALYZER_SSL, 995/tcp))
 0.000000   MetaHookPre   CallFunction(Analyzer::__register_for_port, <frame>, (Analyzer::ANALYZER_SYSLOG, 514/udp))
-0.000000   MetaHookPre   CallFunction(Analyzer::__register_for_port, <frame>, (Analyzer::ANALYZER_TEREDO, 3544/udp))
 0.000000   MetaHookPre   CallFunction(Analyzer::__register_for_port, <frame>, (Analyzer::ANALYZER_XMPP, 5222/tcp))
 0.000000   MetaHookPre   CallFunction(Analyzer::__register_for_port, <frame>, (Analyzer::ANALYZER_XMPP, 5269/tcp))
 0.000000   MetaHookPre   CallFunction(Analyzer::disable_analyzer, <frame>, (Analyzer::ANALYZER_TCPSTATS))
@@ -1175,7 +1175,6 @@
 0.000000   MetaHookPre   CallFunction(Analyzer::register_for_port, <frame>, (Analyzer::ANALYZER_SSL, 993/tcp))
 0.000000   MetaHookPre   CallFunction(Analyzer::register_for_port, <frame>, (Analyzer::ANALYZER_SSL, 995/tcp))
 0.000000   MetaHookPre   CallFunction(Analyzer::register_for_port, <frame>, (Analyzer::ANALYZER_SYSLOG, 514/udp))
-0.000000   MetaHookPre   CallFunction(Analyzer::register_for_port, <frame>, (Analyzer::ANALYZER_TEREDO, 3544/udp))
 0.000000   MetaHookPre   CallFunction(Analyzer::register_for_port, <frame>, (Analyzer::ANALYZER_XMPP, 5222/tcp))
 0.000000   MetaHookPre   CallFunction(Analyzer::register_for_port, <frame>, (Analyzer::ANALYZER_XMPP, 5269/tcp))
 0.000000   MetaHookPre   CallFunction(Analyzer::register_for_ports, <frame>, (Analyzer::ANALYZER_DCE_RPC, {135/tcp}))
@@ -1204,7 +1203,6 @@
 0.000000   MetaHookPre   CallFunction(Analyzer::register_for_ports, <frame>, (Analyzer::ANALYZER_SSH, {22/tcp}))
 0.000000   MetaHookPre   CallFunction(Analyzer::register_for_ports, <frame>, (Analyzer::ANALYZER_SSL, {563<...>/tcp}))
 0.000000   MetaHookPre   CallFunction(Analyzer::register_for_ports, <frame>, (Analyzer::ANALYZER_SYSLOG, {514/udp}))
-0.000000   MetaHookPre   CallFunction(Analyzer::register_for_ports, <frame>, (Analyzer::ANALYZER_TEREDO, {3544/udp}))
 0.000000   MetaHookPre   CallFunction(Analyzer::register_for_ports, <frame>, (Analyzer::ANALYZER_XMPP, {5222<...>/tcp}))
 0.000000   MetaHookPre   CallFunction(Broker::__set_metrics_export_endpoint_name, <frame>, ())
 0.000000   MetaHookPre   CallFunction(Broker::__set_metrics_export_interval, <frame>, (1.0 sec))
@@ -1679,6 +1677,8 @@
 0.000000   MetaHookPre   CallFunction(PacketAnalyzer::register_packet_analyzer, <frame>, (PacketAnalyzer::ANALYZER_ROOT, 127, PacketAnalyzer::ANALYZER_IEEE802_11_RADIO))
 0.000000   MetaHookPre   CallFunction(PacketAnalyzer::register_packet_analyzer, <frame>, (PacketAnalyzer::ANALYZER_ROOT, 239, PacketAnalyzer::ANALYZER_NFLOG))
 0.000000   MetaHookPre   CallFunction(PacketAnalyzer::register_packet_analyzer, <frame>, (PacketAnalyzer::ANALYZER_ROOT, 50, PacketAnalyzer::ANALYZER_PPPSERIAL))
+0.000000   MetaHookPre   CallFunction(PacketAnalyzer::register_packet_analyzer, <frame>, (PacketAnalyzer::ANALYZER_UDP, 32900, PacketAnalyzer::ANALYZER_TEREDO))
+0.000000   MetaHookPre   CallFunction(PacketAnalyzer::register_packet_analyzer, <frame>, (PacketAnalyzer::ANALYZER_UDP, 3544, PacketAnalyzer::ANALYZER_TEREDO))
 0.000000   MetaHookPre   CallFunction(PacketAnalyzer::register_packet_analyzer, <frame>, (PacketAnalyzer::ANALYZER_UDP, 4789, PacketAnalyzer::ANALYZER_VXLAN))
 0.000000   MetaHookPre   CallFunction(PacketAnalyzer::register_packet_analyzer, <frame>, (PacketAnalyzer::ANALYZER_UDP, 5072, PacketAnalyzer::ANALYZER_AYIYA))
 0.000000   MetaHookPre   CallFunction(PacketAnalyzer::register_packet_analyzer, <frame>, (PacketAnalyzer::ANALYZER_UDP, 6081, PacketAnalyzer::ANALYZER_GENEVE))
@@ -1693,6 +1693,7 @@
 0.000000   MetaHookPre   CallFunction(PacketAnalyzer::register_packet_analyzer, <frame>, (PacketAnalyzer::ANALYZER_VNTAG, 34984, PacketAnalyzer::ANALYZER_VLAN))
 0.000000   MetaHookPre   CallFunction(PacketAnalyzer::register_packet_analyzer, <frame>, (PacketAnalyzer::ANALYZER_VNTAG, 37120, PacketAnalyzer::ANALYZER_VLAN))
 0.000000   MetaHookPre   CallFunction(PacketAnalyzer::register_protocol_detection, <frame>, (PacketAnalyzer::ANALYZER_UDP, PacketAnalyzer::ANALYZER_AYIYA))
+0.000000   MetaHookPre   CallFunction(PacketAnalyzer::register_protocol_detection, <frame>, (PacketAnalyzer::ANALYZER_UDP, PacketAnalyzer::ANALYZER_TEREDO))
 0.000000   MetaHookPre   CallFunction(PacketFilter::build, <frame>, ())
 0.000000   MetaHookPre   CallFunction(PacketFilter::combine_filters, <frame>, (ip or not ip, and, ))
 0.000000   MetaHookPre   CallFunction(PacketFilter::install, <frame>, ())
@@ -2071,6 +2072,7 @@
 0.000000   MetaHookPre   LoadFile(0, base<...>/supervisor.bif, <...>/supervisor.bif.zeek)
 0.000000   MetaHookPre   LoadFile(0, base<...>/syslog, <...>/syslog)
 0.000000   MetaHookPre   LoadFile(0, base<...>/tcp, <...>/tcp)
+0.000000   MetaHookPre   LoadFile(0, base<...>/teredo, <...>/teredo)
 0.000000   MetaHookPre   LoadFile(0, base<...>/thresholds, <...>/thresholds.zeek)
 0.000000   MetaHookPre   LoadFile(0, base<...>/time, <...>/time.zeek)
 0.000000   MetaHookPre   LoadFile(0, base<...>/tunnels, <...>/tunnels)
@@ -2165,7 +2167,6 @@
 0.000000 | HookCallFunction Analyzer::__register_for_port(Analyzer::ANALYZER_SSL, 993/tcp)
 0.000000 | HookCallFunction Analyzer::__register_for_port(Analyzer::ANALYZER_SSL, 995/tcp)
 0.000000 | HookCallFunction Analyzer::__register_for_port(Analyzer::ANALYZER_SYSLOG, 514/udp)
-0.000000 | HookCallFunction Analyzer::__register_for_port(Analyzer::ANALYZER_TEREDO, 3544/udp)
 0.000000 | HookCallFunction Analyzer::__register_for_port(Analyzer::ANALYZER_XMPP, 5222/tcp)
 0.000000 | HookCallFunction Analyzer::__register_for_port(Analyzer::ANALYZER_XMPP, 5269/tcp)
 0.000000 | HookCallFunction Analyzer::disable_analyzer(Analyzer::ANALYZER_TCPSTATS)
@@ -2228,7 +2229,6 @@
 0.000000 | HookCallFunction Analyzer::register_for_port(Analyzer::ANALYZER_SSL, 993/tcp)
 0.000000 | HookCallFunction Analyzer::register_for_port(Analyzer::ANALYZER_SSL, 995/tcp)
 0.000000 | HookCallFunction Analyzer::register_for_port(Analyzer::ANALYZER_SYSLOG, 514/udp)
-0.000000 | HookCallFunction Analyzer::register_for_port(Analyzer::ANALYZER_TEREDO, 3544/udp)
 0.000000 | HookCallFunction Analyzer::register_for_port(Analyzer::ANALYZER_XMPP, 5222/tcp)
 0.000000 | HookCallFunction Analyzer::register_for_port(Analyzer::ANALYZER_XMPP, 5269/tcp)
 0.000000 | HookCallFunction Analyzer::register_for_ports(Analyzer::ANALYZER_DCE_RPC, {135/tcp})
@@ -2257,7 +2257,6 @@
 0.000000 | HookCallFunction Analyzer::register_for_ports(Analyzer::ANALYZER_SSH, {22/tcp})
 0.000000 | HookCallFunction Analyzer::register_for_ports(Analyzer::ANALYZER_SSL, {563<...>/tcp})
 0.000000 | HookCallFunction Analyzer::register_for_ports(Analyzer::ANALYZER_SYSLOG, {514/udp})
-0.000000 | HookCallFunction Analyzer::register_for_ports(Analyzer::ANALYZER_TEREDO, {3544/udp})
 0.000000 | HookCallFunction Analyzer::register_for_ports(Analyzer::ANALYZER_XMPP, {5222<...>/tcp})
 0.000000 | HookCallFunction Broker::__set_metrics_export_endpoint_name()
 0.000000 | HookCallFunction Broker::__set_metrics_export_interval(1.0 sec)
@@ -2731,6 +2730,8 @@
 0.000000 | HookCallFunction PacketAnalyzer::register_packet_analyzer(PacketAnalyzer::ANALYZER_ROOT, 127, PacketAnalyzer::ANALYZER_IEEE802_11_RADIO)
 0.000000 | HookCallFunction PacketAnalyzer::register_packet_analyzer(PacketAnalyzer::ANALYZER_ROOT, 239, PacketAnalyzer::ANALYZER_NFLOG)
 0.000000 | HookCallFunction PacketAnalyzer::register_packet_analyzer(PacketAnalyzer::ANALYZER_ROOT, 50, PacketAnalyzer::ANALYZER_PPPSERIAL)
+0.000000 | HookCallFunction PacketAnalyzer::register_packet_analyzer(PacketAnalyzer::ANALYZER_UDP, 32900, PacketAnalyzer::ANALYZER_TEREDO)
+0.000000 | HookCallFunction PacketAnalyzer::register_packet_analyzer(PacketAnalyzer::ANALYZER_UDP, 3544, PacketAnalyzer::ANALYZER_TEREDO)
 0.000000 | HookCallFunction PacketAnalyzer::register_packet_analyzer(PacketAnalyzer::ANALYZER_UDP, 4789, PacketAnalyzer::ANALYZER_VXLAN)
 0.000000 | HookCallFunction PacketAnalyzer::register_packet_analyzer(PacketAnalyzer::ANALYZER_UDP, 5072, PacketAnalyzer::ANALYZER_AYIYA)
 0.000000 | HookCallFunction PacketAnalyzer::register_packet_analyzer(PacketAnalyzer::ANALYZER_UDP, 6081, PacketAnalyzer::ANALYZER_GENEVE)
@@ -2745,6 +2746,7 @@
 0.000000 | HookCallFunction PacketAnalyzer::register_packet_analyzer(PacketAnalyzer::ANALYZER_VNTAG, 34984, PacketAnalyzer::ANALYZER_VLAN)
 0.000000 | HookCallFunction PacketAnalyzer::register_packet_analyzer(PacketAnalyzer::ANALYZER_VNTAG, 37120, PacketAnalyzer::ANALYZER_VLAN)
 0.000000 | HookCallFunction PacketAnalyzer::register_protocol_detection(PacketAnalyzer::ANALYZER_UDP, PacketAnalyzer::ANALYZER_AYIYA)
+0.000000 | HookCallFunction PacketAnalyzer::register_protocol_detection(PacketAnalyzer::ANALYZER_UDP, PacketAnalyzer::ANALYZER_TEREDO)
 0.000000 | HookCallFunction PacketFilter::build()
 0.000000 | HookCallFunction PacketFilter::combine_filters(ip or not ip, and, )
 0.000000 | HookCallFunction PacketFilter::install()
@@ -3135,6 +3137,7 @@
 0.000000 | HookLoadFile  base<...>/supervisor.bif <...>/supervisor.bif.zeek
 0.000000 | HookLoadFile  base<...>/syslog <...>/syslog
 0.000000 | HookLoadFile  base<...>/tcp <...>/tcp
+0.000000 | HookLoadFile  base<...>/teredo <...>/teredo
 0.000000 | HookLoadFile  base<...>/thresholds <...>/thresholds.zeek
 0.000000 | HookLoadFile  base<...>/time <...>/time.zeek
 0.000000 | HookLoadFile  base<...>/tunnels <...>/tunnels
