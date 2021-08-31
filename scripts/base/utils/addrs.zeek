@@ -97,14 +97,21 @@ function extract_ip_addresses(input: string, check_wrapping: bool &default=F): s
 		{
 		if ( i % 2 == 1 && is_valid_ip(parts[i]) )
 			{
-			local p1 = parts[i-1];
-			local p3 = parts[i+1];
-			if ( ! check_wrapping ||
-			       ( p1[-1] == "\[" && p3[0] == "\]" ) ||
-			       ( p1[-1] == "\(" && p3[0] == "\)" ) ||
-			       ( p1[-1] == "\{" && p3[0] == "\}" ) ||
-			       ( p1[-1] == " " && p3[0] == " " ) )
+			if ( ! check_wrapping )
+				{
 				output += parts[i];
+				}
+			else if ( i > 0 && i < |parts| - 1 )
+				{
+				local p1 = parts[i-1];
+				local p3 = parts[i+1];
+
+				if ( ( p1[-1] == "\[" && p3[0] == "\]" ) ||
+			             ( p1[-1] == "\(" && p3[0] == "\)" ) ||
+			             ( p1[-1] == "\{" && p3[0] == "\}" ) ||
+			             ( p1[-1] == " " && p3[0] == " " ) )
+					output += parts[i];
+				}
 			}
 		}
 	return output;
